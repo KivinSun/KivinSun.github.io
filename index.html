@@ -1,0 +1,174 @@
+
+<!doctype html>
+<html>
+
+<!DOCTYPE html>
+ 
+<html lang="en"> <head> <meta charset="utf-8">
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="./css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			
+			.mui-fullscreen{
+				background-color: #3B3CE8;
+				top:0px;
+				bottom: 0px;
+				left: 0px;
+				right: 0px;
+				margin: auto;
+			}
+			.mui-header{
+				margin-top: 0px;
+				background-color: #000000;
+				height: 80px;
+				width: 100%;
+				display: none;
+			
+			}
+			.header-title{
+				color:#EEEEEE;
+				font-size: 12px;
+				margin-left: 20px;
+				margin-right: 40px;
+				padding-top: 20px;	
+				display: inline-block;
+				float: left;
+			}
+			b, strong{
+				color: red;
+			}
+			.mui-content{
+				background-color: white;
+				width: 100%;
+				height:100%;
+				margin-top:0px;
+				background-image: url(./img/bg.jpg);
+
+				text-align: center;
+			}
+
+			.icon-class{
+				width: 90px;
+				height: 90px;
+				left: 0px;
+				right:0px;
+				margin-top: 70px;
+				border-radius: 20px;
+			    /* display: block; */
+			}
+			h2 {
+				color: white;
+				display: inline;
+			}
+			.top-40-class{
+				margin-top: 50px;
+			}
+			.code-img{
+				width: 100px;
+				height: 100px;
+			}
+			
+			.instaill-btn{
+			    border: 0px;
+				border-radius: 25px;
+				width: 200px;
+				height: 50px;
+				background-color: #2AC845;
+				color: white;
+				font-size: 20px;
+			}
+			.line-div{
+				float: left;
+				display: none;
+				position: absolute;
+				right: 20px;
+				top:10px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<div class="mui-fullscreen">
+			<div class="mui-header" id="webchatSign">
+			  <div class="header-title">点击右上角按钮，然后在弹出的菜单中选择在<b>浏览器</b>中打开，即可安装</div><div class="line-div"><img class="line-class" src="./img/line.png"></div>
+			</div>
+			<div class="mui-content bg-blur">
+				<div>
+					<img class="icon-class" src="./img/icon.png">
+				</div>
+				<div class="top-40-class">
+					<!-- <img class="phone-class" src="./img/iphone.png"> -->
+					<h2> 菱扬智行</h2></div>
+				<div class="top-40-class"><img class="code-img" src="./img/yl.png" ></div>
+				<div class="top-40-class">
+					<button class="instaill-btn" onclick="download()">安装</button>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript">
+			var a = navigator.userAgent;
+			var isAndroid = a.indexOf('Android') > -1 || a.indexOf('Adr') > -1; //android终端
+			var isiOS = !!a.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			
+			var isWorkWechat = false;
+			var isWechat=false;
+			var isOther=false;
+			//获取浏览器
+	        var ua= window.navigator.userAgent.toLowerCase();
+
+			if(!isAndroid&&!isiOS){
+				$('.instaill-btn').hide();
+			}
+
+			if(isAndroid){
+				$(".phone-class").attr('src',"./img/andr.png");
+			}
+			if(isiOS){
+				$(".phone-class").attr('src',"./img/iphone.png");
+			}
+			
+			function download(){
+				
+				if( (ua.match(/MicroMessenger/i) == 'micromessenger') && (ua.match(/wxwork/i) == 'wxwork') ){
+				    //企业微信
+					// downLoad();
+					/*if(isAndroid){
+						$('#webchatSign').slideDown(1000,function(){
+								$('.line-div').show();
+						});
+					}else{
+						downLoad();
+					}*/
+                                         downLoad();
+					
+				}else if( ua.match(/micromessenger/i) == 'micromessenger' ){
+				    //微信
+					$('#webchatSign').slideDown(1000,function(){
+							$('.line-div').show();
+					});
+				}else{
+					downLoad();
+				}
+			}
+				
+			function downLoad(){
+				if(isAndroid){
+					window.location.href="https://cxpt.yili.com/file/app/app.apk";
+				}else if(isiOS){
+					window.location.href="https://apps.apple.com/us/app/%E8%8F%B1%E6%89%AC%E6%99%BA%E8%A1%8C/id1661616454";
+				}
+			}
+		</script>
+	</body>
+
+</html>
